@@ -16,7 +16,7 @@ This program is a desktop Tic-Tac-Toe game with multiplayer and multi-round mode
 | :-------------------------------------: | :----------------------------------------------: |
 | Program name:                           | Tic-Tac-Toe with Undefeatable Bot                |
 | Date of creation:                       | January 2022                                     |
-| Technologies used:                      | Java SE                                          |
+| Technologies used:                      | Java SE, Maven                                   |
 | Time spent to <br/> create the program: | ~4 days                                          |
 | Author:                                 | Herman Ciechanowiec <br/> herman@ciechanowiec.eu |
 | License:                                | MIT No Attribution License                       |
