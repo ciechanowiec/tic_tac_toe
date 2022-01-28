@@ -13,7 +13,6 @@ public class Board {
 
     private MainEngine mainEngine;
     private BoardCombinations boardCombinations;
-
     private char[][] boardData;
 
     public Board(MainEngine mainEngine) {
@@ -35,10 +34,12 @@ public class Board {
         return this.boardData;
     }
 
-    public void showMarkInputInLogic(int rowIndex, int columnIndex, char markTypeRepresentation) {
+    public void showMarkInputInLogic(int[] cellCoordinates, char markTypeRepresentation) {
+        int rowIndex = cellCoordinates[0];
+        int columnIndex = cellCoordinates[1];
         this.boardData[rowIndex][columnIndex] = markTypeRepresentation;
     }
-
+    
     public boolean checkIfWon() {
         return this.boardCombinations.checkIfWon();
     }
@@ -63,7 +64,6 @@ public class Board {
         return this.boardCombinations.getMoveFromBot();
     }
     
-
     public Player getCurrentPlayer() {
         return this.mainEngine.getCurrentPlayer();
     }

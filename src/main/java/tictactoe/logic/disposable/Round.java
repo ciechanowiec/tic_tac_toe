@@ -8,9 +8,15 @@ import tictactoe.logic.persistant.Player;
 
 public class Round {
 
+    public enum RoundResult {
+        WIN, DRAW
+    }
+
     private MainEngine mainEngine;
     private Player currentPlayer;
     private Player currentOpponent;
+    private RoundResult roundResult;
+    private Player winner;
 
     public Round(MainEngine mainEngine) {
         this.mainEngine = mainEngine;
@@ -40,23 +46,11 @@ public class Round {
             this.currentPlayer = this.mainEngine.getPlayer2();
             this.currentOpponent = this.mainEngine.getPlayer1();
         }
-    }
-
-    // public void setCurrentPlayer(Player currentPlayer) {        
-    //     this.currentPlayer = currentPlayer;
-    //     this.currentOpponent = this.mainEngine.getPlayer1() == currentPlayer ?
-    //                            this.mainEngine.getPlayer2() : this.mainEngine.getPlayer1();
-    // }
+    }    
 
     public Player getCurrentPlayer() {
         return this.currentPlayer;
     }
-
-// public void setCurrentOpponent(Player currentOpponent) {
-//     this.currentOpponent = currentOpponent;
-//     this.currentPlayer = this.mainEngine.getPlayer1() == currentOpponent ?
-//                          this.mainEngine.getPlayer2() : this.mainEngine.getPlayer1();
-// }
 
     public Player getCurrentOpponent() {
         return this.currentOpponent;
@@ -71,7 +65,23 @@ public class Round {
             && this.currentOpponent == this.mainEngine.getPlayer1()) {
             this.currentPlayer = this.mainEngine.getPlayer1();
             this.currentOpponent = this.mainEngine.getPlayer2();
-            }
+        }
     }   
+
+    public void setRoundResult(RoundResult roundResult) {
+        this.roundResult = roundResult;
+    }
+
+    public RoundResult getRoundResult() {
+        return this.roundResult;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
+    public Player getWinner() {
+        return this.winner;
+    }
     
 }

@@ -52,15 +52,19 @@ public class BoardCombinations {
             case BOT_MEDIUM:
                 return getMoveFromBotMedium();
             case BOT_HARD:
-                return getMoveFromBotHard();
+                /* Makes random move (as BOT EASY) if it is the first move in game */
+                if (this.board.getEmptyCells().size() == 9) {
+                    return getMoveFromBotEasy();
+                } else {
+                    return getMoveFromBotHard();
+                }
             default:
                 throw new IllegalArgumentException("Exception occured: a bot type from" 
                                                     + "which you are trying to get a move doesn't exist");
         }
-
     }
 
-    /* BOT EASY makes technically valid random moves */
+    /* BOT-EASY makes technically valid random moves. */    
     private int[] getMoveFromBotEasy() {
         ArrayList<Integer[]> emptyCells = this.board.getEmptyCells();
         Collections.shuffle(emptyCells);
@@ -68,10 +72,10 @@ public class BoardCombinations {
         return new int[] {chosenCell[0], chosenCell[1]};
     }
     
-    /* BOT MEDIUM makes moves using the following logic:
-       1. If BOT has already two in a row and can win with one further move, BOT does so.
-       2. If a BOT's opponent can win with one move, BOT plays the move necessary to block this.
-       3. Otherwise, BOT makes a random move as BOT EASY. */
+    /* BOT-MEDIUM makes moves according to the following logic:
+       1. If BOT-MEDIUM has already two marks in a row and can win with one further move, it does so.
+       2. If a BOT-MEDIUM's opponent can win with one move, BOT-MEDIUM makes the move necessary to block this.
+       3. Otherwise, BOT-MEDIUM makes a random move as BOT-EASY. */
     private int[] getMoveFromBotMedium() {        
         Player currentPlayer = this.board.getCurrentPlayer();
         Player currentOpponent = this.board.getCurrentOpponent();
@@ -178,11 +182,11 @@ public class BoardCombinations {
         return (numOfEmptyMarks == 1 && numOfCheckedPlayerMarks == 2);
     }
 
-    /* BOT HARD makes moves using a minimax algorithm:
-       1. BOT HARD never loses.
-       2. BOT HARD always wins if only it's opponent's moves make it possible.
-       3. There are two possibly outcomes when playing with BOT HARD: BOT HARD win or draw. */    
-    
+    /* BOT-HARD makes moves using a minimax algorithm and according to the following logic:
+       1. BOT-HARD never loses.
+       2. BOT-HARD always wins if it's opponent's moves make it possible.
+       3. There are two possible outcomes when playing against BOT-HARD: a draw or BOT-HARD's win.
+       4. If two BOTS-HARD play against each other the round always finishes with a draw. */
     private int[] getMoveFromBotHard() {
         Player currentPlayer = this.board.getCurrentPlayer();
         Player currentOpponent = this.board.getCurrentOpponent();

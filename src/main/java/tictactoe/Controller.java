@@ -1,12 +1,10 @@
 package tictactoe;
 
-import java.util.Scanner;
-import java.util.logging.Logger;
-
 import tictactoe.Definitions.Mark;
 import tictactoe.Definitions.PlayerType;
 import tictactoe.gui.MainFrame;
 import tictactoe.logic.MainEngine;
+import tictactoe.logic.disposable.Round.RoundResult;
 import tictactoe.logic.persistant.Player;
 
 public class Controller {
@@ -14,73 +12,74 @@ public class Controller {
     private MainEngine mainEngine;
     private MainFrame mainFrame;
 
-    public Controller() {
+    public void runGame() {
         this.mainEngine = new MainEngine(this);
         this.mainFrame = new MainFrame(this);    
     }
-        
-    public void showMarkInputInLogic(int rowIndex, int columnIndex, char markTypeRepresentation) {
-        this.mainEngine.showMarkInputInLogic(rowIndex, columnIndex, markTypeRepresentation);
+    
+    public void processStartGameAction(PlayerType player1Type, String player1Name,
+                                       PlayerType player2Type, String player2Name) {        
+        this.mainEngine.processStartGameAction(player1Type, player1Name, player2Type, player2Name);
     }
     
-    public char[][] getBoardData() {
-        return this.mainEngine.getBoardData();
+    public void prepareAllButtonsForRoundStart() {
+        this.mainFrame.prepareAllButtonsForRoundStart();
+    }
+
+    public void startRound() {     
+        this.mainEngine.startRound();
     }
     
-    // public void showBoard() {
-    //     this.mainFrame.showBoard();
-    // }
+    public void showPendingScreen() {
+        this.mainFrame.showPendingScreen();
+    }
 
-    // private void testMethod() {
-    //     /* TESTING... */
-    //     this.mainEngine.setupPlayers(PlayerType.HUMAN, "HUMAN", PlayerType.BOT_EASY, "BOT");        
-    //     // this.mainEngine.setupPlayers(PlayerType.BOT_EASY, "BOT 1", PlayerType.BOT_HARD, "BOT 2");        
+    public void showFinishScreen() {
+        this.mainFrame.showFinishScreen();
+    }
 
-    //     Scanner scanner = new Scanner(System.in);
-    //     while (true) {
-    //         System.out.println("Round? (y/n)");
-    //         String command = scanner.nextLine().toLowerCase();
-    //         if (command.equals("y")) {
-    //             testRound();
-    //         } else {
-    //             break;
-    //         }
-    //     }                        
-    // }   
-    
-    // private void testRound() {
-    //     this.mainEngine.startRound();
+    public int getRoundsPlayed() {
+        return this.mainEngine.getRoundsPlayed();   
+    }
 
-    //     while (!this.mainEngine.checkIfWon() && !this.mainEngine.checkIfDraw()) {            
-    //         showBoard();
-    //         Player currentPlayer = this.mainEngine.getCurrentPlayer();
-    //         String startMessage = String.format("%s (%s - %s) move:", currentPlayer.getPlayerName(), currentPlayer.getMarkType(), currentPlayer.getPlayerType());
-    //         System.out.println(startMessage);
+    public Player getPlayer1() {
+        return this.mainEngine.getPlayer1();
+    }
 
-    //         char currentPlayerMarkTypeRepresentation = currentPlayer.getMarkType().getRepresentation();
-    //         int[] nextMove;
-    //         if (currentPlayer.getPlayerType() == PlayerType.HUMAN) {
-    //             Scanner scanner = new Scanner(System.in);
-    //             int rowIndex = scanner.nextInt();
-    //             int columnIndex = scanner.nextInt();
-    //             nextMove = new int[] {rowIndex, columnIndex};
-    //         } else {
-    //             nextMove = this.mainEngine.getMoveFromBot();
-    //         }
-    //         showMarkInputInLogic(nextMove[0], nextMove[1], currentPlayerMarkTypeRepresentation);
-    //         if (!this.mainEngine.checkIfWon() && !this.mainEngine.checkIfDraw()) {
-    //             this.mainEngine.getRound().invertPlayers();
-    //         }
-    //     }
+    public Player getPlayer2() {
+        return this.mainEngine.getPlayer2();
+    }
 
-    //     if (this.mainEngine.checkIfWon()) {
-    //         Player currentPlayer = this.mainEngine.getCurrentPlayer();
-    //         String winMessage = String.format("\n%s (%s - %s) WON!\n", currentPlayer.getPlayerName(), currentPlayer.getMarkType(), currentPlayer.getPlayerType());
-    //         System.out.println(winMessage);
-    //     } else if (this.mainEngine.checkIfDraw()) {
-    //         System.out.println("\nDRAW");
-    //     }                
+    public Player getCurrentPlayer() {
+        return this.mainEngine.getCurrentPlayer();
+    }
 
-    // }
-    
+    public Player getCurrentOpponent() {
+        return this.mainEngine.getCurrentOpponent();
+    }
+ 
+    public void showMarkInputInLogic(int[] cellCoordinates) {
+        this.mainEngine.showMarkInputInLogic(cellCoordinates);
+    }
+
+    public void showMarkInputInGUI(int[] cellCoordinates, Mark currentPlayerMarkType) {
+        this.mainFrame.showMarkInputInGUI(cellCoordinates, currentPlayerMarkType);
+    }
+
+    public void showTurnCommandForCurrentPlayer() {
+        this.mainFrame.showTurnCommandForCurrentPlayer();
+    }
+
+    public void grayOutAllButtons() {
+        this.mainFrame.grayOutAllButtons();
+    }
+
+    public RoundResult getRoundResult() {
+        return this.mainEngine.getRoundResult();
+    }
+
+    public Player getWinner() {
+        return this.mainEngine.getWinner();
+    }
+
 }
