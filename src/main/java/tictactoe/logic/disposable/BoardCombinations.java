@@ -73,7 +73,7 @@ public class BoardCombinations {
     }
     
     /* BOT-MEDIUM makes moves according to the following logic:
-       1. If BOT-MEDIUM has already two marks in a row and can win with one further move, it does so.
+       1. If BOT-MEDIUM has already two marks in a line and can win with one further move, it does so.
        2. If a BOT-MEDIUM's opponent can win with one move, BOT-MEDIUM makes the move necessary to block this.
        3. Otherwise, BOT-MEDIUM makes a random move as BOT-EASY. */
     private int[] getMoveFromBotMedium() {        
