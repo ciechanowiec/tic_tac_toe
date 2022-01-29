@@ -2,7 +2,7 @@
   * 
   * ## Table of Contents
   * 1. Basic Info
-  * 2. Functionality
+  * 2. Features
   * 3. Bot Logic
   * 4. Architecture
   * 5. License
@@ -20,7 +20,7 @@
   * | Author:                           | Herman Ciechanowiec, herman@ciechanowiec.eu |
   * | License:                          | MIT No Attribution License                  |
   * 
-  * ## Functionality
+  * ## Features
   * 
   * The program has the following features:
   * - graphical user interface
