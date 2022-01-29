@@ -21,7 +21,7 @@ This program is a desktop Tic-Tac-Toe game with multiplayer and multi-round mode
 | Author:                                 | Herman Ciechanowiec <br/> herman@ciechanowiec.eu |
 | License:                                | MIT No Attribution License                       |
 
-## Functionality
+## Features
 
 The program has the following features:
 - graphical user interface
