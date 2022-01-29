@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [Basic Info](#Basic-Info)
-2. [Functionality](#Functionality)
+2. [Features](#Features)
 3. [Bot Logic](#Bot-Logic)
 4. [Architecture](#Architecture)
 5. [Screenshots](#Screenshots)
